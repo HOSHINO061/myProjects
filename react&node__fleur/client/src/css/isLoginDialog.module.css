@@ -1,0 +1,102 @@
+/* .dialog {
+    border: none;
+    width: 35vw;
+    height: 30vh;
+    background: rgb(255, 255, 255);
+    font-size: 1rem;
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    line-height: 2rem;
+    margin: 20vh auto 0;
+    animation-name: example;
+    animation-duration: 1s;
+}
+
+
+.dialogM {
+    border: none;
+    width: 35vw;
+    height: 30vh;
+    background: rgb(255, 255, 255);
+    font-size: 1rem;
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    line-height: 2rem;
+    margin: 20vh auto 0;
+    animation-name: example2;
+    animation-duration: 1s;
+}
+
+#dialogOpenNoLogin {
+    height: 200px;
+    width: 500px;
+}
+
+.none {
+    display: none;
+}
+
+.dialogBlock {
+    color: #4C4844;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin-left: 3vw;
+}
+
+.diaLogBtn {
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 320px;
+    background-color: white;
+    font-size: 1.2rem;
+}
+
+.box {
+    width: 100px;
+    height: 200;
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.relativeM {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 100px;
+} */
+
+
+.isLoginDialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: #000000aa;
+    z-index: 9999;
+}
+
+.isLoginDialog__main {
+    margin: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40vw;
+    height: 50vh;
+    background-color: #fff;
+    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.isLoginDialog__title {
+    font-size: 1.5rem;
+}
+
+.isLoginDialog__btn {
+    align-self: flex-end;
+    padding: 0 1.5rem;
+    font-size: 1.2rem;
+    background-color: #fff;
+}
