@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>イコノイジョイ</title>
+</head>
+
+<body>
+    <div id="nope"></div>
+    <nav class="mainNav">
+        <i class="bi bi-grid-fill" id="icon"></i>
+        <ul>
+            <!-- 三團 -->
+            <li>
+                <a href="#loveMemberP">=LOVE</a>
+                <ul>
+                    <li><a href="#loveMemberP">成員</a></li>
+                    <li><a href="#loveMusicP">音樂作品</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#meMemberP">≠ME</a>
+                <ul>
+                    <li><a href="#meMemberP">成員</a></li>
+                    <li><a href="#meMusicP">音樂作品</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#joyMemberP">≒JOY</a>
+                <ul>
+                    <li><a href="#joyMemberP">成員</a></li>
+                    <li><a href="#joyMusicP">音樂作品</a></li>
+                </ul>
+            </li>
+            <!-- YT / Twitter / buy-->
+            <li>
+                <a>YouTube</a>
+                <ul id="ytList">
+                    <li><a href="https://www.youtube.com/@equallove_" target="_blank"
+                            rel="noopener noreferrer">=LOVE公式頻道</a></li>
+                    <li><a href="https://www.youtube.com/@notequalme6632" target="_blank"
+                            rel="noopener noreferrer">≠ME公式頻道</a></li>
+                    <li><a href="https://www.youtube.com/@nearlyequaljoy5843" target="_blank"
+                            rel="noopener noreferrer">≒JOY公式頻道</a></li>
+                    <li><a href="https://www.youtube.com/@ikonoijoy" target="_blank"
+                            rel="noopener noreferrer">イコノイジョイ頻道</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>Twiiter</a>
+                <ul>
+                    <li><a href="https://twitter.com/Equal_LOVE_12" target="_blank" rel="noopener noreferrer">=LOVE
+                            Twitter</a></li>
+                    <li><a href="https://twitter.com/Notequal_ME" target="_blank" rel="noopener noreferrer">≠ME
+                            Twitter</a></li>
+                    <li><a href="https://twitter.com/Nearlyequal_joy" target="_blank" rel="noopener noreferrer">≒JOY
+                            Twitter</a></li>
+                </ul>
+            </li>
+            <li><a href="#buyPosition">代購</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article id="love" class="group">
+            <p id="lovePosition"></p>
+            <div class="head">
+                <p id="loveMemberP"></p>
+                <h3>成員</h3>
+            </div>
+            <section class="member" id="loveMember">
+                <div class="memberContainer">
+                    <img src="./image/love_member.jpg" usemap="#love_map">
+                </div>
+            </section>
+            <div class="head">
+                <p id="loveMusicP"></p>
+                <h3>音樂作品</h3>
+            </div>
+            <section class="music" id="loveMusic">
+                <h4>單曲</h4>
+                <div id="loveSingle"></div>
+                <h4>專輯/MV集</h4>
+                <div id="loveAlbum"></div>
+                <h4>演唱會</h4>
+                <div id="loveConcert"></div>
+                <h4>合同演唱會</h4>
+                <div id="loveSpecialConcert"></div>
+            </section>
+        </article>
+        <article id="me" class="group">
+            <p id="mePosition"></p>
+            <div class="head">
+                <p id="meMemberP"></p>
+                <h3>成員</h3>
+            </div>
+            <section class="member" id="meMember">
+                <div class="memberContainer">
+                    <img src="./image/me_member.jpg" usemap="#me_map">
+                </div>
+            </section>
+            <div class="head">
+                <p id="meMusicP"></p>
+                <h3>音樂作品</h3>
+            </div>
+            <section class="music" id="meMusic">
+                <h4>單曲</h4>
+                <div id="meSingle"></div>
+                <h4>專輯/MV集</h4>
+                <div id="meAlbum"></div>
+                <h4>演唱會</h4>
+                <div id="meConcert"></div>
+                <h4>合同演唱會</h4>
+                <div id="meSpecialConcert"></div>
+            </section>
+        </article>
+        <article id="joy" class="group">
+            <p id="joyPosition"></p>
+            <div class="head">
+                <p id="joyMemberP"></p>
+                <h3>成員</h3>
+            </div>
+            <section class="member" id="joyMember">
+                <div class="memberContainer">
+                    <img src="./image/joy_member.jpg" usemap="#joy_map">
+                </div>
+            </section>
+            <div class="head">
+                <p id="joyMusicP"></p>
+                <h3>音樂作品</h3>
+            </div>
+            <section class="music" id="joyMusic">
+                <h4>單曲</h4>
+                <div id="joySingle"></div>
+                <h4>專輯/MV集</h4>
+                <div id="joyAlbum"></div>
+                <h4>演唱會</h4>
+                <div id="joyConcert"></div>
+                <h4>合同演唱會</h4>
+                <div id="joySpecialConcert"></div>
+            </section>
+        </article>
+        <article id="buy">
+            <p id="buyPosition"></p>
+            <nav>
+                <p>了解台灣粉絲購買日本商品的困難，提供協助購買各通路商品的服務。</p>
+                <!-- <p>僅收取運費，不加收額外費用。</p> -->
+                <span>作品內容：</span>
+                <ul>
+                    <li><a href="#loveMusicP">=LOVE</a></li>
+                    <li><a href="#meMusicP">≠ME</a></li>
+                    <li><a href="#joyMusicP">≒JOY</a></li>
+                </ul>
+
+            </nav>
+            <form>
+                <!-- 基本資料 -->
+                <fieldset>
+                    <legend>基本資料</legend>
+                    <div>
+                        <label for="userName">姓名：</label>
+                        <input type="text" id="userName" required value="陳柏勲">
+                    </div>
+                    <div>
+                        <label for="userPhone">電話：</label>
+                        <input type="tel" id="userPhone" required value="0912345678">
+                    </div>
+                    <div>
+                        <label for="userEmail">電子郵件：</label>
+                        <input type="email" id="userEmail" required value="ba06.....@gmail.com">
+                    </div>
+                    <div>
+                        <label for="userAddress">寄送地址：</label>
+                        <input type="text" id="userAddress" placeholder="請填寫完整地址，以利寄送。" required value="台中市某某區某某路123號">
+                    </div>
+                </fieldset>
+                <!-- 商品選擇 -->
+                <fieldset>
+                    <legend>商品選擇</legend>
+                    <div>
+                        <span>商品：</span>
+                        <select required id="goods">
+                            <!-- 空的value可以讓required有用 -->
+                            <option disabled value="">請選擇欲購入商品</option>
+                            <optgroup label="イコノイジョイ">
+                                <option value="con2021">合同Concert 2021</option>
+                                <option value="con2020">合同Concert 2020</option>
+                            </optgroup>
+                            <optgroup label="=LOVE">
+                                <option value="love_s13">13th Single</option>
+                                <option value="love_s12">12th Single</option>
+                                <option value="love_s11">11th Single</option>
+                                <option value="love_s10">10th Single</option>
+                                <option value="love_s09">9th Single</option>
+                                <option value="love_s08">8th Single</option>
+                                <option value="love_s07">7th Single</option>
+                                <option value="love_s06">6th Single</option>
+                                <option value="love_s05">5th Single</option>
+                                <option value="love_s04">4th Single</option>
+                                <option value="love_s03">3rd Single</option>
+                                <option value="love_s02">2nd Single</option>
+                                <option value="love_s01">1st Single</option>
+                                <option value="love_album">全部、内緒。</option>
+                                <option value="love_mv">過去最上キュン</option>
+                                <option value="love_con4">4th Concert</option>
+                                <option value="love_con3">3rd Concert</option>
+                                <option value="love_con2">2nd Concert</option>
+                                <option value="love_con1">1st Concert</option>
+                                <option value="love_conTsuaa2022">全国ツアー2022</option>
+                                <option value="love_conTsuaa2021">全国ツアー2021</option>
+                                <option value="love_conTsuaa2020">全国ツアー2020</option>
+                                <option value="love_conNagisa" selected>齊藤なぎさ卒業Concert</option>
+                            </optgroup>
+                            <optgroup label="≠ME">
+                                <option value="me_s06">6th Single</option>
+                                <option value="me_s05">5th Single</option>
+                                <option value="me_s04">4th Single</option>
+                                <option value="me_s03">3rd Single</option>
+                                <option value="me_s02">2nd Single</option>
+                                <option value="me_s01">1st Single</option>
+                                <option value="me_album">超特急 ≠ME行き</option>
+                                <option value="me_con3">3rd Concert</option>
+                                <option value="me_con1">1st Concert</option>
+                            </optgroup>
+                            <optgroup label="≒JOY">
+                                <option value="joy_s04">4th Single</option>
+                                <option value="joy_s03">3rd Single</option>
+                                <option value="joy_s02">2nd Single</option>
+                                <option value="joy_s01">1st Single</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <!-- 通路 -->
+                    <div>
+                        <span>通路：</span>
+                        <select required id="path">
+                            <!-- 空的value可以讓required有用 -->
+                            <option disabled value="">請選擇商品販售通路</option>
+                            <option value="HMV">HMV</option>
+                            <option value="TSUTAYA RECORDS">TSUTAYA RECORDS</option>
+                            <option value="Sony Music Shop" selected>Sony Music Shop</option>
+                            <option value="7net shopping">7net shopping</option>
+                            <option value="Lammtarra">Lammtarra</option>
+                            <option value="Rakuten Books">Rakuten Books</option>
+                            <option value="Amazon.co.jp">Amazon.co.jp</option>
+                            <option value="others">其他，請於備註說明</option>
+                        </select>
+                    </div>
+                    <!-- 形態 -->
+                    <div>
+                        <span>形態：</span>
+                        <input type="checkbox" name="type" id="typeA" checked>
+                        <label for="typeA">Type-A</label>
+                        <input type="checkbox" name="type" id="typeB">
+                        <label for="typeB">Type-B</label>
+                        <input type="checkbox" name="type" id="typeC">
+                        <label for="typeC">Type-C</label>
+                        <input type="checkbox" name="type" id="typeD">
+                        <label for="typeD">Type-D</label>
+                        <input type="checkbox" name="type" id="typeOther">
+                        <label for="typeOther">其他，請於備註說明</label>
+                    </div>
+                    <!-- 特典 -->
+                    <div>
+                        <span>特典：</span>
+                        <input type="radio" name="special" id="yesspecial" required checked>
+                        <label for="yesspecial">需要</label>
+                        <input type="radio" name="special" id="nospecial">
+                        <label for="nospecial">不需要</label>
+                    </div>
+                </fieldset>
+                <!-- 說明欄 -->
+                <fieldset>
+                    <legend>備註</legend>
+                    <textarea rows="4" placeholder="針對商品的備註" id="userWords"></textarea>
+                </fieldset>
+                <div>
+                    <input type="submit" value="　確定　" id="submitBtn">
+                    <input type="reset" value="重新填寫" id="resetBtn">
+                </div>
+            </form>
+        </article>
+    </main>
+    <footer>
+        <div>
+            <p>資料更新時間：2023/05/01</p>
+        </div>
+    </footer>
+    <!-- 表單的彈出 -->
+    <dialog id="userInputShow">
+        <div>
+            <div></div>
+            <p><button id="dialogSubmit">確定</button></p>
+        </div>
+        <img src="" class="randomImg">
+        <img src="" class="randomImg">
+        <img src="" class="randomImg">
+        <img src="" class="randomImg">
+        <img src="" class="randomImg">
+    </dialog>
+    <!-- YT連結的彈出 -->
+    <dialog id="ytcontainer">
+        <img src="./image/close.png" id="ytclose">
+        <iframe id="ytiframe" src="" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+    </dialog>
+
+    <map name="love_map">
+        <area title="emiri" shape="poly" class="memberMap"
+            coords="936,187,895,210,897,308,874,327,881,359,868,384,874,418,897,409,911,432,877,613,957,609,964,634,957,671,897,762,902,811,927,845,966,868,991,854,985,817,1008,696,1035,675,1026,604,1069,597,1102,558,1037,425,1051,320,978,196">
+        <area title="hana" shape="poly" class="memberMap"
+            coords="2008,180,1969,201,1969,261,1960,293,1916,318,1921,345,1902,407,1932,423,1951,405,1955,419,1939,465,1919,543,1925,570,1919,586,1939,591,1916,637,1974,767,1974,804,1937,827,1942,859,2033,862,2045,800,2059,754,2020,749,2008,602,2093,591,2084,534,2123,563,2141,540,2114,511,2109,474,2120,458,2102,384,2116,359,2098,311,2061,297,2070,274,2047,194">
+        <area title="risa" shape="poly" class="memberMap"
+            coords="1813,178,1772,201,1751,270,1705,323,1705,348,1717,410,1735,433,1707,541,1684,582,1735,594,1744,633,1767,770,1769,818,1758,855,1815,853,1813,775,1799,678,1845,667,1875,685,1886,715,1916,706,1914,662,1896,605,1919,575,1909,536,1891,504,1896,486,1882,403,1905,353,1882,314,1875,254,1863,213,1845,181">
+        <area title="kiara" shape="poly" class="memberMap"
+            coords="552,185,508,210,503,311,471,329,464,382,455,430,464,538,457,586,496,611,540,618,563,650,485,721,483,744,483,799,524,813,529,753,545,726,570,703,570,760,539,843,557,868,594,850,598,779,626,611,674,586,681,563,658,490,628,439,630,386,688,364,688,334,720,295,665,230,640,233,621,203">
+        <area title="maika" shape="poly" class="memberMap"
+            coords="1205,176,1161,212,1155,288,1127,309,1099,396,1111,430,1120,533,1115,591,1161,598,1166,646,1157,708,1166,797,1164,854,1235,875,1249,834,1221,783,1272,591,1304,577,1267,451,1299,407,1278,317,1248,292,1242,210">
+        <area title="hitomi" shape="poly" class="memberMap"
+            coords="1584,173,1554,199,1561,277,1515,297,1492,407,1551,433,1522,600,1577,598,1602,623,1609,667,1581,731,1535,745,1547,845,1650,862,1671,845,1632,797,1655,678,1675,655,1666,614,1675,584,1694,554,1652,417,1678,421,1710,412,1698,352,1664,293,1627,284,1639,231,1632,189">
+        <area title="shoko" shape="poly" class="memberMap"
+            coords="367,164,326,173,305,222,308,293,280,327,259,394,292,453,280,511,246,579,312,600,342,726,317,811,317,857,379,852,418,878,454,866,406,761,388,708,413,593,454,577,415,456,443,423,457,382,445,327,434,274,409,247,413,187">
+        <area title="iori" shape="poly" class="memberMap"
+            coords="1395,169,1354,188,1361,289,1313,318,1301,412,1331,431,1294,525,1308,571,1299,589,1326,596,1333,612,1329,656,1345,688,1354,772,1340,811,1308,862,1462,848,1476,816,1487,747,1444,734,1395,656,1409,598,1469,596,1439,449,1483,399,1473,305,1457,282,1455,220,1441,176">
+        <area title="sana" shape="poly" class="memberMap"
+            coords="791,177,750,221,763,271,738,296,704,329,704,361,672,418,701,441,736,418,727,448,683,579,731,599,734,638,738,675,763,774,770,815,761,851,809,861,816,829,796,691,837,677,851,728,887,732,897,694,897,632,801,641,812,604,865,602,863,542,849,467,874,451,861,386,874,359,863,315,829,235,835,198">
+        <area title="anna" shape="poly" class="memberMap"
+            coords="2226,194,2189,217,2187,267,2203,295,2173,313,2134,357,2141,375,2114,414,2125,458,2153,467,2130,517,2146,538,2114,582,2153,591,2146,669,2146,767,2125,852,2173,866,2182,811,2187,687,2203,607,2215,609,2224,680,2256,779,2249,850,2299,857,2322,825,2297,761,2263,651,2270,616,2302,609,2290,495,2334,499,2361,467,2336,407,2364,341,2311,300,2293,267,2283,212">
+    </map>
+    <map name="me_map">
+        <area title="hana" shape="poly" class="memberMap"
+            coords="1753,299,1735,331,1742,400,1717,411,1712,510,1728,528,1691,590,1733,661,1698,680,1742,700,1737,748,1746,799,1735,838,1735,881,1769,893,1765,923,1824,920,1818,854,1834,769,1827,709,1836,686,1873,668,1875,622,1850,549,1873,542,1880,505,1866,418,1822,388,1829,356,1808,299">
+        <area title="kirari" shape="poly" class="memberMap"
+            coords="359,342,330,401,327,424,302,433,263,594,249,608,254,626,263,658,284,686,309,709,302,773,311,805,295,872,311,897,366,904,362,853,348,807,353,722,394,798,424,885,449,890,470,860,435,773,396,706,473,675,471,631,430,553,455,510,452,450,425,425,420,368,404,338">
+        <area title="moeko" shape="poly" class="memberMap"
+            coords="1580,301,1550,334,1548,370,1559,400,1508,421,1527,561,1518,604,1502,623,1511,643,1531,652,1531,717,1506,774,1488,854,1470,916,1523,918,1573,900,1598,863,1589,820,1607,738,1621,685,1664,688,1724,660,1673,562,1664,536,1673,511,1671,387,1637,364,1632,335,1616,307">
+        <area title="natsune" shape="poly" class="memberMap"
+            coords="964,292,932,315,923,391,886,409,893,489,911,512,897,547,840,629,861,643,927,698,927,797,925,852,907,891,948,911,964,932,1010,925,1017,776,1033,668,1074,659,1106,620,1076,588,1044,420,1014,388,1008,356,1008,312">
+        <area title="natsumi" shape="poly" class="memberMap"
+            coords="1958,301,1937,393,1902,409,1902,457,1919,521,1882,615,1877,670,1902,696,1987,702,1969,737,1962,790,1939,856,1946,895,1964,907,1994,909,2022,923,2072,930,2063,872,2065,833,2063,755,2049,696,2054,661,2079,636,2081,608,2045,514,2063,508,2052,475,2056,402,2029,388,2036,342,2026,301,1992,287">
+        <area title="momo" shape="poly" class="memberMap"
+            coords="2159,377,2141,432,2109,478,2081,492,2072,524,2109,537,2104,588,2090,613,2088,643,2118,668,2159,700,2157,719,2136,746,2116,790,2074,865,2074,882,2111,888,2157,806,2210,737,2240,817,2253,895,2272,909,2288,904,2295,870,2283,804,2260,705,2308,664,2301,632,2267,565,2272,439,2237,414,2228,350,2176,343">
+        <area title="mirei" shape="poly" class="memberMap"
+            coords="519,308,507,388,487,395,471,480,477,542,496,549,477,620,477,673,496,689,537,707,530,799,507,893,539,911,611,911,622,812,620,718,620,686,661,668,636,652,659,597,638,418,611,386,604,322,572,301">
+        <area title="hitomi" shape="poly" class="memberMap"
+            coords="1386,308,1352,340,1366,392,1331,399,1301,503,1308,528,1322,537,1283,617,1283,638,1304,658,1320,691,1285,830,1271,876,1248,915,1265,927,1306,920,1333,902,1326,840,1354,748,1377,801,1382,840,1395,867,1409,906,1441,895,1455,837,1416,785,1409,734,1388,697,1453,693,1508,665,1492,638,1505,603,1485,558,1478,512,1487,420,1455,399,1441,351,1432,317">
+        <area title="saya" shape="poly" class="memberMap"
+            coords="732,299,700,338,718,354,714,400,679,413,698,521,668,595,645,640,666,663,728,700,702,787,675,840,679,888,723,909,748,927,801,895,787,842,806,760,808,682,854,654,835,631,854,606,831,455,858,462,870,448,838,429,799,379,796,322,764,315">
+        <area title="nanaka" shape="poly" class="memberMap"
+            coords="1184,299,1148,312,1138,361,1161,395,1138,411,1102,413,1069,462,1086,510,1106,544,1086,588,1111,615,1074,666,1086,696,1104,716,1127,725,1152,851,1173,929,1226,925,1221,865,1223,734,1253,705,1294,675,1281,640,1271,572,1278,423,1228,386,1235,345,1221,301">
+        <area title="shiori" shape="poly" class="memberMap"
+            coords="147,331,117,388,69,468,67,556,94,556,67,659,85,677,83,700,126,730,101,815,94,879,122,902,142,895,140,833,168,755,170,812,154,886,152,911,200,909,200,835,218,792,214,721,257,707,259,663,236,595,236,448,204,418,200,340">
+        <area title="miyuki" shape="poly" class="memberMap"
+            coords="2398,327,2373,361,2366,430,2341,432,2318,552,2343,563,2304,627,2316,664,2343,689,2343,712,2322,808,2299,873,2293,912,2313,916,2355,893,2357,831,2378,753,2403,804,2414,847,2403,886,2417,896,2451,889,2485,841,2453,785,2417,724,2495,730,2538,685,2515,623,2485,570,2515,556,2504,446,2472,405,2458,350,2433,324">
+    </map>
+    <map name="joy_map">
+        <area title="jurii" shape="poly" class="memberMap"
+            coords="640,182,601,210,597,297,574,292,558,290,537,320,546,356,562,418,569,439,572,471,551,600,581,611,583,650,590,687,611,801,569,831,565,863,620,861,654,854,659,797,659,740,691,767,702,717,654,659,668,623,707,613,707,558,721,586,739,584,753,563,734,533,751,322,728,292,695,233,684,194">
+        <area title="konoa" shape="poly" class="memberMap"
+            coords="1182,261,1161,311,1129,327,1118,444,1143,472,1164,504,1164,543,1150,618,1193,634,1198,676,1182,745,1193,797,1184,852,1228,866,1281,855,1271,811,1304,708,1301,630,1345,614,1315,520,1322,474,1347,435,1331,359,1310,320,1285,290,1283,217,1237,194,1198,203">
+        <area title="ayumi" shape="poly" class="memberMap"
+            coords="1455,171,1423,192,1407,284,1363,297,1354,348,1347,398,1352,437,1368,456,1354,497,1359,607,1409,618,1409,653,1405,728,1416,765,1395,834,1416,850,1460,862,1485,862,1483,816,1508,708,1505,614,1538,589,1533,524,1526,467,1535,412,1542,320,1512,288,1501,258,1508,201">
+        <area title="renon" shape="poly" class="memberMap"
+            coords="1613,176,1586,222,1579,267,1609,288,1579,306,1542,380,1538,437,1547,456,1538,504,1538,547,1558,554,1531,669,1600,765,1597,806,1554,834,1551,862,1668,855,1707,871,1721,836,1705,751,1668,749,1652,733,1655,634,1673,621,1682,568,1721,591,1726,543,1712,522,1712,435,1719,318,1691,286,1678,228,1659,180">
+        <area title="mitsuki" shape="poly" class="memberMap"
+            coords="1795,185,1763,247,1756,293,1730,346,1719,403,1717,518,1735,541,1719,626,1758,642,1779,695,1785,798,1756,830,1749,853,1804,866,1868,869,1919,834,1893,765,1845,666,1845,634,1875,629,1866,561,1893,434,1877,402,1886,304,1859,269,1845,210,1822,187">
+        <area title="aoi" shape="poly" class="memberMap"
+            coords="2135,198,2100,223,2086,295,2054,347,2054,444,2070,602,2086,620,2116,623,2130,678,2091,710,2066,753,2034,772,2045,801,2077,856,2114,850,2107,799,2134,744,2127,817,2125,840,2171,861,2208,858,2185,806,2189,702,2203,647,2212,615,2242,604,2228,526,2221,434,2238,391,2244,358,2219,322,2189,319,2178,292,2189,262,2189,205">
+        <area title="aimi" shape="poly" class="memberMap"
+            coords="2306,170,2274,241,2277,287,2251,301,2235,335,2249,353,2231,418,2251,404,2233,521,2249,597,2249,640,2260,805,2233,842,2240,865,2293,860,2309,840,2299,775,2302,718,2361,778,2378,814,2378,858,2412,869,2428,837,2439,803,2398,762,2348,668,2350,624,2437,606,2437,555,2417,530,2419,317,2396,298,2387,246,2361,181">
+        <area title="mai" shape="poly" class="memberMap"
+            coords="223,194,207,286,175,341,184,375,202,391,214,515,202,605,243,612,259,614,250,664,216,731,181,726,177,802,200,841,220,841,257,747,248,834,287,859,324,850,301,809,314,694,331,657,331,607,310,561,328,540,337,478,347,428,354,366,337,306,303,288,301,212,273,185">
+        <area title="riko" shape="poly" class="memberMap"
+            coords="432,196,404,274,383,309,354,339,360,366,347,449,337,540,317,561,333,593,354,593,383,511,376,584,374,614,413,623,418,651,413,724,406,767,386,832,404,850,441,859,482,852,477,816,480,772,510,703,507,621,549,602,535,529,528,458,549,442,558,426,530,320,512,290,503,231,487,196">
+        <area title="yuuka" shape="poly" class="memberMap"
+            coords="851,180,817,238,764,267,787,300,764,332,757,412,776,467,792,488,780,524,764,584,771,602,721,701,707,740,668,811,661,845,686,866,711,850,746,735,831,614,851,614,849,673,838,747,829,841,845,859,904,868,902,834,879,816,895,706,913,612,939,531,934,472,939,357,930,311,890,286,900,254,904,212,888,185">
+        <area title="momoka" shape="poly" class="memberMap"
+            coords="1937,182,1894,297,1887,364,1896,426,1900,499,1900,614,1944,625,1951,671,1917,797,1923,845,1988,868,2013,852,2015,822,1999,793,2022,667,2031,614,2063,598,2042,446,2049,364,2020,297,2006,215,1976,183">
+        <area title="arisu" shape="poly" class="memberMap"
+            coords="985,205,952,304,943,341,946,368,943,460,946,529,927,600,959,611,973,657,966,728,975,809,959,854,989,859,1017,848,1026,770,1021,671,1051,701,1079,772,1088,806,1060,854,1099,861,1148,832,1118,735,1083,657,1081,625,1131,606,1113,540,1104,476,1125,334,1079,299,1065,272,1065,235,1028,201">
+    </map>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="./js/jquery.rwdImageMaps.js"></script>
+    <script>
+        $(document).ready(function (e) {
+            $('img[usemap]').rwdImageMaps();
+        });
+    </script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>

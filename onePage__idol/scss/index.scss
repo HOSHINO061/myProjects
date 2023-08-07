@@ -1,0 +1,904 @@
+@use "sass:math";
+@import './function.scss';
+
+// 全體變數
+$bgi: linear-gradient(#ffffff19, #ffffff19), url(../image/ikonoijyoi_2022.jpg);
+$width: 70vw;
+$height: 85vh;
+$height_768: 90vh;
+$fz: 1.4rem;
+$loveColor: #ea6c81;
+$meColor: #79ccbd;
+$joyColor: #ffdf6a;
+$group: love, me, joy;
+$groupColor: $loveColor, $meColor, $joyColor;
+$bgColorW: #ffffffe6;
+$bgColorB: #000000cc;
+// mainNav變數
+$navItems: 6;
+$navGap: .5vw;
+$navBgc: #000000cc;
+// main變數
+$memberGap: 0px;
+$memberColumns: 3;
+$musicGap: 5px;
+$musicColumns: 4;
+$musicColumns_768: 2;
+$loveMusic: (
+    single: ("s13", "s12", "s11", "s10", "s09", "s08", "s07", "s06", "s05", "s04", "s03", "s02", "s01"),
+    album: ("mv", "album"),
+    concert: ("conNagisa", "conTsuaa2022", "conTsuaa2021", "conTsuaa2020", "con4", "con3", "con2", "con1"),
+    specialConcert: ("con2021", "con2020")
+);
+$meMusic: (
+    single: ("s06", "s05", "s04", "s03", "s02", "s01"),
+    album: ("album"),
+    concert: ("con3", "con1"),
+    specialConcert: ("con2021", "con2020")
+);
+$joyMusic: (
+    single: ("s04", "s03", "s02", "s01"),
+    album: (),
+    concert: (),
+    specialConcert: ()
+);
+$iconWidth: 23%;
+$iconHeight: 15%;
+
+@mixin nav_a($color) {
+    a:hover {
+        color: $color;
+
+        &::after {
+            border-color: $color;
+        }
+    }
+}
+
+@for $i from 1 through 3 {
+    @keyframes iconImgShadow_#{nth($group, $i)} {
+        0% {
+            @include filter_shadow(0px, 0px, 1px, darken(nth($groupColor, $i), 40));
+        }
+
+        50% {
+            @include filter_shadow(0px, 0px, 3px, darken(nth($groupColor, $i), 40));
+            transform: scale(1.05);
+        }
+
+        100% {
+            @include filter_shadow(0px, 0px, 1px, darken(nth($groupColor, $i), 40));
+        }
+    }
+}
+
+@mixin grid_row($whichGroup, $whichMap, $whichKind, $colCount) {
+    @each $category in map-get($whichMap, $whichKind) {
+        $order: index(map-get($whichMap, $whichKind), $category);
+
+        ##{$whichGroup}_#{$category}_inf {
+            grid-row-start: 2 * ceil(math.div($order, $colCount));
+        }
+    }
+}
+
+@keyframes show {
+    0% {
+        height: 0px;
+    }
+
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        height: 100%;
+    }
+
+    100% {
+        height: 0px;
+    }
+}
+
+@keyframes ytImg {
+    0% {
+        transform: rotateZ(0deg) scale(1);
+    }
+
+    25% {
+        transform: rotateZ(-5deg) scale(.9);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    75% {
+        transform: rotateZ(5deg) scale(.9);
+    }
+
+    100% {
+        transform: rotateZ(0deg) scale(1);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    background: #{$bgi} no-repeat center 80%/ cover;
+    background-attachment: fixed;
+}
+
+#nope {
+    height: $height;
+}
+
+.mainNav {
+    // 固定位置
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    max-height: calc(100vh - $height);
+    line-height: calc(100vh - $height);
+    background-color: $navBgc;
+
+    &>i {
+        display: none;
+    }
+
+    &>ul {
+        display: grid;
+        grid-template-columns: repeat($navItems, calc(($width - $navGap * ($navItems - 1)) / $navItems));
+        gap: $navGap;
+        width: $width;
+        margin: 0 auto;
+
+        // a標籤統一設定
+        a {
+            display: block;
+            position: relative;
+            text-align: center;
+            font-size: calc($fz * 1.5);
+            color: #fff;
+            cursor: pointer;
+
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: 10px;
+                left: 0;
+                width: 100%;
+                border-bottom: 5px solid #fff;
+                border-radius: 2.5px;
+                transform: scale(0);
+                transition: .3s;
+            }
+
+            &:hover::after {
+                transform: scale(1);
+            }
+        }
+
+        &>li {
+            position: relative;
+
+            ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                width: 125%;
+                background-color: $navBgc;
+                border-radius: 0 0 10px 10px;
+
+                li {
+                    margin: 3px;
+                }
+
+                a {
+                    text-align: left;
+                    font-size: calc($fz * 1.15);
+                    line-height: 10vh;
+                }
+
+                &#ytList li:last-child>a {
+                    font-size: calc($fz * .99);
+                }
+            }
+
+            // 保持外層底線存在
+            &:has(ul:hover)>a::after {
+                transform: scale(1);
+            }
+
+            &:hover>ul {
+                display: block;
+            }
+        }
+
+        // 顏色
+        @for $i from 1 through 5 {
+            @if $i <=3 {
+                &>li:nth-child(#{$i}) {
+                    @include nav_a(nth($groupColor, $i));
+
+                    &:has(ul:hover)>a {
+                        color: nth($groupColor, $i);
+                    }
+                }
+            }
+
+            @else {
+                &>li:nth-child(#{$i}) {
+                    @for $l from 1 through 3 {
+                        &:has(ul li:nth-child(#{$l}):hover)>a {
+                            color: nth($groupColor, $l);
+                        }
+
+                        ul li:nth-child(#{$l}) {
+                            @include nav_a(nth($groupColor, $l));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#lovePosition,
+#loveMemberP,
+#loveMusicP,
+#mePosition,
+#meMemberP,
+#meMusicP,
+#joyPosition,
+#joyMemberP,
+#joyMusicP,
+#buyPosition {
+    position: absolute;
+    top: calc((100vh - $height) * -1);
+}
+
+#love,
+#me,
+#joy,
+#buy,
+.head {
+    position: relative;
+}
+
+main,
+main~* {
+    background-color: $bgColorB;
+}
+
+article {
+    width: $width;
+    margin: auto;
+    padding: 15px 2%;
+}
+
+// 三團統一設定 / 成員介紹圖片動畫 / h3 h4標題
+.group {
+    @for $i from 1 through 3 {
+        &:nth-child(#{$i}) {
+            background-color: #{nth($groupColor, $i)}cc;
+        }
+    }
+
+    @for $i from 1 through 3 {
+        &:nth-of-type(#{$i}) .iconImg {
+            animation: iconImgShadow_#{nth($group, $i)} 1s linear infinite;
+        }
+    }
+
+    h3 {
+        font-size: calc($fz * 1.8);
+    }
+
+    p[id*='MemberP']+h3::after {
+        content: "(請點擊人像)";
+        font-size: $fz;
+    }
+
+    h4 {
+        font-size: calc($fz * 1.3);
+    }
+}
+
+.member {
+    position: relative;
+
+    .memberContainer {
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+        }
+    }
+
+    figure {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        z-index: 5;
+        border-radius: 30px;
+
+        figcaption {
+            margin-left: 30%;
+            font-size: calc($fz * 1.1);
+            cursor: default;
+
+            span:nth-child(1) {
+                display: block;
+                font-weight: bold;
+                font-size: calc($fz * 1.4);
+                margin-bottom: 5px;
+            }
+
+            span:last-child {
+                display: block;
+                @include text-outdent(calc($fz * 1.1), 3);
+            }
+        }
+    }
+}
+
+.memberMap {
+    cursor: pointer;
+}
+
+// joy興趣
+#joy>.member span:last-child {
+    display: none;
+}
+
+.music {
+    &>div {
+        display: grid;
+        grid-template-columns: repeat($musicColumns, calc((100% - $musicGap * ($musicColumns - 1)) / $musicColumns));
+        gap: 10px $musicGap;
+    }
+
+    figure {
+        div {
+            position: relative;
+            width: 80%;
+            margin: auto;
+
+            img {
+                width: 100%;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            img[src*='youtube'] {
+                position: absolute;
+                bottom: 5px;
+                right: 5px;
+                width: 20%;
+                animation: ytImg 2s infinite linear;
+            }
+        }
+    }
+
+    figcaption {
+        margin-top: 5px;
+        font-size: calc($fz * .95);
+    }
+}
+
+.musicintro {
+    grid-column: 1 / span 4;
+    overflow: hidden;
+
+    h5 {
+        font-size: calc($fz * .9);
+
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+    }
+
+    p {
+        font-size: calc($fz * .85);
+
+        @for $i from 4 through 6 {
+            &.musicintro_words_#{$i} {
+                @include text-outdent(calc($fz * .85), calc($i / 2));
+            }
+        }
+    }
+}
+
+.collapse {
+    height: 0;
+    transition: height .35s;
+}
+
+#ytcontainer {
+    margin: auto;
+    width: 133vmin;
+    height: 72vmin;
+    border: none;
+    background-color: transparent;
+    border-radius: 30px 0 30px 30px;
+    overflow: visible;
+
+    // &::after {
+    //     content: "";
+    //     position: absolute;
+    //     top: calc(50% + 5px);
+    //     left: calc(50% + 5px);
+    //     transform: translate(-50%, -50%);
+    //     width: 128vmin;
+    //     height: 72vmin;
+    //     z-index: 0;
+    //     border-radius: 30px;
+    //     background-color: #000;
+    // }
+
+    img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translateY(-2vmin);
+        width: 4vmin;
+        height: 4vmin;
+        z-index: 2;
+        cursor: pointer;
+        @include filter_shadow(0, 0, 1px, #fff);
+
+        &:hover {
+            @include filter_shadow(0, 0, 5px, #fff);
+        }
+    }
+
+    iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 128vmin;
+        height: 72vmin;
+        border-radius: 30px;
+        z-index: 1;
+        box-shadow: 5px 5px 3px #000, -2px -2px 3px #fff;
+    }
+}
+
+@include grid_row(nth($group, 1), $loveMusic, "single", $musicColumns);
+@include grid_row(nth($group, 1), $loveMusic, "album", $musicColumns);
+@include grid_row(nth($group, 1), $loveMusic, "concert", $musicColumns);
+@include grid_row(nth($group, 1), $loveMusic, "specialConcert", $musicColumns);
+@include grid_row(nth($group, 2), $meMusic, "single", $musicColumns);
+@include grid_row(nth($group, 2), $meMusic, "album", $musicColumns);
+@include grid_row(nth($group, 2), $meMusic, "concert", $musicColumns);
+@include grid_row(nth($group, 2), $meMusic, "specialConcert", $musicColumns);
+@include grid_row(nth($group, 3), $joyMusic, "single", $musicColumns);
+
+#buy {
+    font-size: $fz;
+    background-color: $bgColorW;
+
+    nav ul {
+        display: inline-flex;
+
+        &>li {
+            margin: 0 5px;
+            border-radius: 5px;
+
+            @for $i from 1 through 3 {
+                &:nth-child(#{$i}) {
+                    border: nth($groupColor, $i) 2px solid;
+
+                    a {
+                        color: nth($groupColor, $i);
+                    }
+
+                    &:hover {
+                        background-color: nth($groupColor, $i);
+
+                        a {
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            a {
+                font-weight: bold;
+            }
+
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    form {
+        * {
+            border-radius: 10px;
+        }
+
+        fieldset {
+            margin: 20px 0;
+            padding: 10px 10px 20px;
+
+            input,
+            select,
+            textarea {
+                background-color: transparent;
+                border-radius: 8px;
+            }
+
+            // 基本資料
+            &:first-child {
+                display: grid;
+                grid-template-columns: 20% 25% 55%;
+                gap: 10px 0;
+
+                div {
+
+                    &:first-of-type,
+                    &:nth-of-type(2) {
+                        padding-right: 10px;
+                    }
+
+                    &:nth-of-type(4) {
+                        grid-column: 1 / 4;
+                    }
+                }
+
+                input {
+                    height: 90%;
+                    padding-left: 5px;
+                }
+            }
+
+            // 商品選擇
+            &:nth-of-type(2) {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                gap: 10px 0;
+
+                select {
+                    width: calc(100% - $fz * 3 - .35rem);
+                    height: 80%;
+                }
+
+                div {
+
+                    &:first-of-type {
+                        padding-right: 10px;
+                    }
+
+                    &:nth-of-type(3) {
+                        padding-right: 10px;
+                        @include text-outdent($fz, 3, true);
+                    }
+                }
+            }
+
+            // 說明欄
+            &:last-of-type {
+                padding: 0;
+
+                textarea {
+                    width: 100%;
+                    padding-left: 10px;
+                    // 取消邊框
+                    border: none;
+                    outline: none;
+                    // 取消右下角調大小的小三角形
+                    resize: none;
+                }
+            }
+
+            // 輸入框寬度
+            input {
+                &[id*='user'] {
+                    width: calc(100% - $fz * 3 - .35rem);
+                    border-radius: 100px;
+                }
+
+                &[id*='Email'],
+                &[id*='Address'] {
+                    width: calc(100% - $fz * 5 - .35rem);
+                }
+            }
+        }
+
+        // 提交
+        &>div {
+            display: flex;
+
+            input {
+                padding: 5px;
+                font-size: calc($fz * .8);
+
+                &:first-child {
+                    margin-left: auto;
+                    margin-right: 10px;
+                }
+
+                &:not(:first-child) {
+                    margin-right: auto;
+                }
+            }
+        }
+
+        // focus / hover
+        fieldset:first-child input:hover,
+        fieldset:has(textarea:focus),
+        &>div input:hover {
+            box-shadow: 2px 2px #000;
+            border-color: lightblue;
+        }
+    }
+}
+
+#userInputShow {
+    margin: auto;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    font-size: $fz;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    opacity: 1;
+    transition: all .5s;
+    transform: translateY(0);
+    box-shadow: inset 0 0 10px #fff;
+    overflow: initial;
+
+    &>div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 50%;
+        max-height: 50%;
+        z-index: 5;
+
+        &>p {
+            text-align: end;
+        }
+    }
+
+    #dialogSubmit {
+        padding: 3px;
+        border-radius: 5px;
+        background-color: inherit;
+        color: #fff;
+
+        &:hover {
+            box-shadow: inset 0 0 3px #fff;
+        }
+    }
+
+
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &>img {
+        width: 10%;
+        position: absolute;
+        border-radius: 20px;
+    }
+}
+
+footer>div {
+    margin: auto;
+    padding-top: 10px;
+    width: $width;
+    font-size: $fz;
+    text-align: end;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        font-size: 13px;
+    }
+
+    body {
+        background: #{$bgi} repeat-y center top/ contain;
+        background-attachment: fixed;
+    }
+
+    #nope {
+        height: $height_768;
+    }
+
+    .mainNav {
+        max-height: calc(100vh - $height_768);
+        line-height: calc(100vh - $height_768);
+
+        i {
+            display: block;
+            padding-left: 2vw;
+            font-size: calc($fz * 1.5);
+            color: #fff;
+        }
+
+        &>ul {
+            display: none;
+            grid-template-columns: 1fr;
+            gap: 0;
+            width: 35vw;
+            margin: 0;
+
+            a {
+                text-align: start;
+                line-height: 10vh;
+                padding-left: 2vw;
+            }
+
+            &>li {
+                background-color: #000;
+
+                ul {
+                    top: 0;
+                    left: 100%;
+                    width: 60vw;
+                    background-color: #000;
+                    border-radius: 10px;
+
+                    &#ytList li:last-child>a {
+                        font-size: calc($fz * 1.15);
+                    }
+                }
+            }
+        }
+    }
+
+    #lovePosition,
+    #loveMemberP,
+    #loveMusicP,
+    #mePosition,
+    #meMemberP,
+    #meMusicP,
+    #joyPosition,
+    #joyMemberP,
+    #joyMusicP,
+    #buyPosition {
+        position: absolute;
+        top: calc((100vh - $height_768) * -1);
+    }
+
+    article {
+        width: auto;
+    }
+
+    .member figure figcaption {
+        margin: 40vh 0 10px 15px;
+    }
+
+    .music {
+        &>div {
+            grid-template-columns: repeat($musicColumns_768, calc((100% - 10px * ($musicColumns_768 - 1)) / $musicColumns_768));
+            gap: 10px;
+        }
+
+        figure {
+            div {
+                width: 80%;
+            }
+        }
+
+        figcaption {
+            font-size: calc($fz * 1.1);
+        }
+    }
+
+    .musicintro {
+        grid-column: 1 / span $musicColumns_768;
+
+        h5 {
+            font-size: calc($fz * 1);
+
+            &:not(:first-child) {
+                margin-top: 0;
+            }
+        }
+
+        p {
+            font-size: calc($fz * .9);
+
+            @for $i from 4 through 6 {
+                &.musicintro_words_#{$i} {
+                    @include text-outdent(calc($fz * .9), calc($i / 2));
+                }
+            }
+        }
+    }
+
+    #ytcontainer {
+        width: 81vmin;
+        height: 46vmin;
+
+        img {
+            width: 4vmin;
+            height: 4vmin;
+        }
+
+        iframe {
+            width: 80vmin;
+            height: 45vmin;
+        }
+    }
+
+    @include grid_row(nth($group, 1), $loveMusic, "single", $musicColumns_768);
+    @include grid_row(nth($group, 1), $loveMusic, "album", $musicColumns_768);
+    @include grid_row(nth($group, 1), $loveMusic, "concert", $musicColumns_768);
+    @include grid_row(nth($group, 1), $loveMusic, "specialConcert", $musicColumns_768);
+    @include grid_row(nth($group, 2), $meMusic, "single", $musicColumns_768);
+    @include grid_row(nth($group, 2), $meMusic, "album", $musicColumns_768);
+    @include grid_row(nth($group, 2), $meMusic, "concert", $musicColumns_768);
+    @include grid_row(nth($group, 2), $meMusic, "specialConcert", $musicColumns_768);
+    @include grid_row(nth($group, 3), $joyMusic, "single", $musicColumns_768);
+
+    #buy form fieldset {
+        margin: 10px 0;
+
+        &:first-child {
+            grid-template-columns: 1fr;
+
+            div {
+
+                &:first-of-type,
+                &:nth-of-type(2) {
+                    padding-right: 0;
+                }
+
+                &:nth-of-type(4) {
+                    grid-column: 1 / 1;
+                }
+            }
+        }
+
+        // 商品選擇
+        &:nth-of-type(2) {
+            grid-template-columns: 1fr;
+
+            div {
+                &:first-of-type {
+                    padding-right: 0;
+                }
+
+                &:nth-of-type(3) {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+
+    #userInputShow>div {
+        max-width: 90%;
+    }
+
+    footer>div {
+        padding: 10px 10px 0 0;
+        width: auto;
+    }
+}
